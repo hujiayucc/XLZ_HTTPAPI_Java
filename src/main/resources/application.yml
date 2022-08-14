@@ -1,0 +1,5 @@
+config:
+  host: http://127.0.0.1:10429
+  username: ceshi
+  password: ceshi
+  ua: hujiayucc
