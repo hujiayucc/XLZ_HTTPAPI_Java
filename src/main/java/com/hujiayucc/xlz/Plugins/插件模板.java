@@ -51,7 +51,7 @@ public class 插件模板 implements Type, Plugins, Color {
                 ret = api.发送群消息(robot, group, msg, 发送消息_普通消息, false);
             } else if (qq.equals(2792607647L) && msg.equals("测试Java")) {
                 ret = api.发送群消息(robot, group, msg, type, false);
-            } else if (qq.equals(2792607647L) && msg.indexOf("复读" ) != -1 || qq.equals(993753037L) && msg.equals("复读")) {
+            } else if (msg.indexOf("复读" ) != -1) {
                 ret = api.发送群消息(robot, group, Lib.getRightstr(msg, "复读"), 发送消息_普通消息, false);
             } else if (msg.indexOf("php") != -1 | msg.indexOf("PHP") != -1) {
                 msg = "小栗子:https://f.xiaolz.cn/thread-308-1-1.html\n\nGitee:https://gitee.com/hujiayucc/XLZ_HTTPAPI_PHP\n\nGitHub:https://github.com/hujiayucc/XLZ_HTTPAPI_PHP";
