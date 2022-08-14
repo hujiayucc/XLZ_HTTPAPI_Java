@@ -56,6 +56,9 @@ public class 插件模板 implements Type, Plugins, Color {
             } else if (msg.indexOf("php") != -1 | msg.indexOf("PHP") != -1) {
                 msg = "小栗子:https://f.xiaolz.cn/thread-308-1-1.html\n\nGitee:https://gitee.com/hujiayucc/XLZ_HTTPAPI_PHP\n\nGitHub:https://github.com/hujiayucc/XLZ_HTTPAPI_PHP";
                 ret = api.发送群消息(robot, group, msg, 发送消息_普通消息, false);
+            } else if (msg.indexOf("java") != -1 | msg.indexOf("Java") != -1) {
+                msg = "小栗子:https://f.xiaolz.cn/thread-487-1-1.html\n\nGitHub:https://github.com/hujiayucc/XLZ_HTTPAPI_Java\n\nGitee:https://gitee.com/hujiayucc/XLZ_HTTPAPI_Java";
+                ret = api.发送群消息(robot, group, msg, 发送消息_普通消息, false);
             }
         }
         return ret;
