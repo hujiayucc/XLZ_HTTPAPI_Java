@@ -5,16 +5,21 @@
  */
 package com.hujiayucc.xlz.Plugins;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
+import org.springframework.stereotype.Service;
 
 import com.hujiayucc.xlz.Utils.Api;
 import com.hujiayucc.xlz.Utils.Color;
 import com.hujiayucc.xlz.Utils.Lib;
-import com.hujiayucc.xlz.Utils.Plugins;
 import com.hujiayucc.xlz.Utils.Type;
 
+@Service
 @Async("xlz")
-public class 插件模板 implements Type, Plugins, Color {
+public class Plugins implements Type, Color {
+
+    @Autowired
+    private Api api;
 
     /**
      * 私聊
@@ -25,9 +30,8 @@ public class 插件模板 implements Type, Plugins, Color {
      * @param type  消息类型
      * @param api   调用API
      */
-    @Override
     @Async("xlz")
-    public void privateMsg(Long robot, Long qq, String msg, String type, Api api) {
+    public void privateMsg(Long robot, Long qq, String msg, String type) {
         if (qq.equals(2792607647L)) {
             api.发送好友消息(robot, qq, msg, 发送消息_普通消息);
         }
@@ -43,9 +47,8 @@ public class 插件模板 implements Type, Plugins, Color {
      * @param type  消息类型
      * @param api   调用API
      */
-    @Override
     @Async("xlz")
-    public void groupMsg(Long robot, Long group, Long qq, String msg, String type, Api api) {
+    public void groupMsg(Long robot, Long group, Long qq, String msg, String type) {
         if (qq != 1908187655L) {
             if (msg.indexOf("咕咕咕") != -1 && !qq.equals(911782632L)) {
                 api.发送群消息(robot, group, msg, 发送消息_普通消息, false);
@@ -70,9 +73,8 @@ public class 插件模板 implements Type, Plugins, Color {
      * @param msg   消息内容
      * @param api   调用API
      */
-    @Override
     @Async("xlz")
-    public void Event(Long robot, Long group, Long qq, String msg, String type, Api api) {
+    public void Event(Long robot, Long group, Long qq, String msg, String type) {
 
     }
 }
