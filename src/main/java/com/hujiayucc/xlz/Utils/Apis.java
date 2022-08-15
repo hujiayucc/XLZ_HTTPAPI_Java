@@ -22,7 +22,7 @@ public class Apis implements Api, Type, Color, Url {
         param.put("log", log);
         param.put("textclr", textColor);
         param.put("bgclr", bgColor);
-        System.out.println(lib.POST(输出日志, param));
+        lib.POST(输出日志, param);
     }
 
     @Override
@@ -32,7 +32,7 @@ public class Apis implements Api, Type, Color, Url {
         param.put("toqq", qq);
         param.put("msg", msg);
         param.put("type", type);
-        System.out.println(lib.POST(发送好友消息, param));
+        lib.POST(发送好友消息, param);
     }
 
     @Override
@@ -43,7 +43,7 @@ public class Apis implements Api, Type, Color, Url {
         param.put("msg", msg);
         param.put("type", type);
         param.put("anonymous", String.valueOf(anonymous));
-        System.out.println(lib.POST(发送群消息, param));
+        lib.POST(发送群消息, param);
     }
 
     @Override
@@ -53,7 +53,7 @@ public class Apis implements Api, Type, Color, Url {
         param.put("group", group);
         param.put("toqq", qq);
         param.put("msg", msg);
-        System.out.println(lib.POST(发送群临时消息, param));
+        lib.POST(发送群临时消息, param);
     }
 
     @Override
@@ -63,7 +63,7 @@ public class Apis implements Api, Type, Color, Url {
         param.put("discussionid", discussionid);
         param.put("msg", msg);
         param.put("type", type);
-        System.out.println(lib.POST(发送讨论组消息, param));
+        lib.POST(发送讨论组消息, param);
     }
 
     @Override
@@ -73,7 +73,7 @@ public class Apis implements Api, Type, Color, Url {
         param.put("discussionid", discussionid);
         param.put("toqq", qq);
         param.put("msg", msg);
-        System.out.println(lib.POST(发送讨论组临时消息, param));
+        lib.POST(发送讨论组临时消息, param);
     }
 
     @Override
@@ -83,7 +83,7 @@ public class Apis implements Api, Type, Color, Url {
         param.put("toqq", qq);
         param.put("msg", msg);
         param.put("remark", remark);
-        System.out.println(lib.POST(添加好友, param));
+        lib.POST(添加好友, param);
     }
 
     @Override
@@ -92,7 +92,7 @@ public class Apis implements Api, Type, Color, Url {
         param.put("logonqq", robot);
         param.put("group", group);
         param.put("msg", msg);
-        System.out.println(lib.POST(添加群, param));
+        lib.POST(添加群, param);
     }
 
     @Override
@@ -100,7 +100,7 @@ public class Apis implements Api, Type, Color, Url {
         Map<String, Object> param = new HashMap<String, Object>();
         param.put("logonqq", robot);
         param.put("toqq", qq);
-        System.out.println(lib.POST(删除好友, param));
+        lib.POST(删除好友, param);
     }
 
     @Override
@@ -109,7 +109,7 @@ public class Apis implements Api, Type, Color, Url {
         param.put("logonqq", robot);
         param.put("toqq", qq);
         param.put("isblock", String.valueOf(isblock));
-        System.out.println(lib.POST(置屏蔽好友, param));
+        lib.POST(置屏蔽好友, param);
     }
 
     @Override
@@ -118,7 +118,7 @@ public class Apis implements Api, Type, Color, Url {
         param.put("logonqq", robot);
         param.put("toqq", qq);
         param.put("iscare", String.valueOf(iscare));
-        System.out.println(lib.POST(置特别关心好友, param));
+        lib.POST(置特别关心好友, param);
     }
 
     @Override
@@ -130,7 +130,7 @@ public class Apis implements Api, Type, Color, Url {
         param.put("isflash", String.valueOf(isflash));
         param.put("type", type);
         param.put("isgif", String.valueOf(isgif));
-        System.out.println(lib.POST(上传好友图片, param));
+        lib.POST(上传好友图片, param);
     }
 
     @Override
@@ -142,7 +142,7 @@ public class Apis implements Api, Type, Color, Url {
         param.put("isflash", String.valueOf(isflash));
         param.put("type", type);
         param.put("isgif", isgif);
-        System.out.println(lib.POST(上传群图片, param));
+        lib.POST(上传群图片, param);
     }
 
     @Override
@@ -155,7 +155,7 @@ public class Apis implements Api, Type, Color, Url {
         param.put("type", type);
         param.put("audio", audio);
         param.put("time", time);
-        System.out.println(lib.POST(上传好友语音, param));
+        lib.POST(上传好友语音, param);
     }
 
     @Override
@@ -168,7 +168,7 @@ public class Apis implements Api, Type, Color, Url {
         param.put("type", type);
         param.put("audio", audio);
         param.put("time", time);
-        System.out.println(lib.POST(上传群语音, param));
+        lib.POST(上传群语音, param);
     }
 
     @Override
@@ -177,7 +177,7 @@ public class Apis implements Api, Type, Color, Url {
         param.put("logonqq", robot);
         param.put("type", type);
         param.put("pic", pic);
-        System.out.println(lib.POST(上传头像, param));
+        lib.POST(上传头像, param);
     }
 
     @Override
@@ -187,7 +187,7 @@ public class Apis implements Api, Type, Color, Url {
         param.put("group", group);
         param.put("toqq", qq);
         param.put("newcard", newcard);
-        System.out.println(lib.POST(设置群名片, param));
+        lib.POST(设置群名片, param);
     }
 
     @Override
@@ -196,14 +196,14 @@ public class Apis implements Api, Type, Color, Url {
         param.put("logonqq", robot);
         param.put("toqq", qq);
         param.put("fromcache", fromcache);
-        System.out.println(lib.POST(取昵称, param));
+        lib.POST(取昵称, param);
     }
 
     @Override
     public void 获取skey(Long robot) {
         Map<String, Object> param = new HashMap<String, Object>();
         param.put("logonqq", robot);
-        System.out.println(lib.POST(获取skey, param));
+        lib.POST(获取skey, param);
     }
 
     @Override
@@ -211,34 +211,34 @@ public class Apis implements Api, Type, Color, Url {
         Map<String, Object> param = new HashMap<String, Object>();
         param.put("logonqq", robot);
         param.put("domain", domain);
-        System.out.println(lib.POST(获取pskey, param));
+        lib.POST(获取pskey, param);
     }
 
     @Override
     public void 获取clientkey(Long robot) {
         Map<String, Object> param = new HashMap<String, Object>();
         param.put("logonqq", robot);
-        System.out.println(lib.POST(获取clientkey, param));
+        lib.POST(获取clientkey, param);
     }
 
     @Override
     public void 取框架QQ() {
         Map<String, Object> param = new HashMap<String, Object>();
-        System.out.println(lib.POST(取框架QQ, param));
+        lib.POST(取框架QQ, param);
     }
 
     @Override
     public void 取好友列表(Long robot) {
         Map<String, Object> param = new HashMap<String, Object>();
         param.put("logonqq", robot);
-        System.out.println(lib.POST(取好友列表, param));
+        lib.POST(取好友列表, param);
     }
 
     @Override
     public void 取群列表(Long robot) {
         Map<String, Object> param = new HashMap<String, Object>();
         param.put("logonqq", robot);
-        System.out.println(lib.POST(取群列表, param));
+        lib.POST(取群列表, param);
     }
 
     @Override
@@ -246,7 +246,7 @@ public class Apis implements Api, Type, Color, Url {
         Map<String, Object> param = new HashMap<String, Object>();
         param.put("logonqq", robot);
         param.put("group", group);
-        System.out.println(lib.POST(取群成员列表, param));
+        lib.POST(取群成员列表, param);
     }
 
     @Override
@@ -256,7 +256,7 @@ public class Apis implements Api, Type, Color, Url {
         param.put("group", group);
         param.put("toqq", qq);
         param.put("unadmin", String.valueOf(unadmin));
-        System.out.println(lib.POST(设置管理员, param));
+        lib.POST(设置管理员, param);
     }
 
     @Override
@@ -264,7 +264,7 @@ public class Apis implements Api, Type, Color, Url {
         Map<String, Object> param = new HashMap<String, Object>();
         param.put("logonqq", robot);
         param.put("group", group);
-        System.out.println(lib.POST(取群管理层列表, param));
+        lib.POST(取群管理层列表, param);
     }
 
     @Override
@@ -273,7 +273,7 @@ public class Apis implements Api, Type, Color, Url {
         param.put("logonqq", robot);
         param.put("group", group);
         param.put("toqq", qq);
-        System.out.println(lib.POST(取群名片, param));
+        lib.POST(取群名片, param);
     }
 
     @Override
@@ -281,7 +281,7 @@ public class Apis implements Api, Type, Color, Url {
         Map<String, Object> param = new HashMap<String, Object>();
         param.put("logonqq", robot);
         param.put("toqq", qq);
-        System.out.println(lib.POST(取个性签名, param));
+        lib.POST(取个性签名, param);
     }
 
     @Override
@@ -289,7 +289,7 @@ public class Apis implements Api, Type, Color, Url {
         Map<String, Object> param = new HashMap<String, Object>();
         param.put("logonqq", robot);
         param.put("nickname", nickname);
-        System.out.println(lib.POST(修改昵称, param));
+        lib.POST(修改昵称, param);
     }
 
     @Override
@@ -298,7 +298,7 @@ public class Apis implements Api, Type, Color, Url {
         param.put("logonqq", robot);
         param.put("signat", signat);
         param.put("pos", pos);
-        System.out.println(lib.POST(修改个性签名, param));
+        lib.POST(修改个性签名, param);
     }
 
     @Override
@@ -308,7 +308,7 @@ public class Apis implements Api, Type, Color, Url {
         param.put("group", group);
         param.put("toqq", qq);
         param.put("ignoreaddgrequest", String.valueOf(ignoreaddgrequest));
-        System.out.println(lib.POST(删除群成员, param));
+        lib.POST(删除群成员, param);
     }
 
     @Override
@@ -318,7 +318,7 @@ public class Apis implements Api, Type, Color, Url {
         param.put("group", group);
         param.put("toqq", qq);
         param.put("time", time);
-        System.out.println(lib.POST(禁言群成员, param));
+        lib.POST(禁言群成员, param);
     }
 
     @Override
@@ -327,7 +327,7 @@ public class Apis implements Api, Type, Color, Url {
         param.put("logonqq", robot);
         param.put("group", group);
         param.put("dismiss", String.valueOf(dismiss));
-        System.out.println(lib.POST(退群, param));
+        lib.POST(退群, param);
     }
 
     @Override
@@ -337,7 +337,7 @@ public class Apis implements Api, Type, Color, Url {
         param.put("group", group);
         param.put("type", type);
         param.put("pic", pic);
-        System.out.println(lib.POST(上传群头像, param));
+        lib.POST(上传群头像, param);
     }
 
     @Override
@@ -346,7 +346,7 @@ public class Apis implements Api, Type, Color, Url {
         param.put("logonqq", robot);
         param.put("group", group);
         param.put("ismute", String.valueOf(ismute));
-        System.out.println(lib.POST(全员禁言, param));
+        lib.POST(全员禁言, param);
     }
 
     @Override
@@ -356,7 +356,7 @@ public class Apis implements Api, Type, Color, Url {
         param.put("group", group);
         param.put("type", type);
         param.put("isallow", String.valueOf(isallow));
-        System.out.println(lib.POST(设置群权限, param));
+        lib.POST(设置群权限, param);
     }
 
     @Override
@@ -366,7 +366,7 @@ public class Apis implements Api, Type, Color, Url {
         param.put("group", group);
         param.put("type", type);
         param.put("value", value);
-        System.out.println(lib.POST(设置群权限, param));
+        lib.POST(设置群权限, param);
     }
 
     @Override
@@ -386,12 +386,12 @@ public class Apis implements Api, Type, Color, Url {
                 param.put("discussionid", qq);
                 break;
             default:
-                System.out.println("type参数错误");
+                System.out.println("type参数错误");;
                 return;
         }
         param.put("random", random);
         param.put("req", req);
-        System.out.println(lib.POST(撤回消息, param));
+        lib.POST(撤回消息, param);
     }
 
     @Override
@@ -402,7 +402,7 @@ public class Apis implements Api, Type, Color, Url {
         param.put("long", longs);
         param.put("lat", lat);
         param.put("enable", String.valueOf(enable));
-        System.out.println(lib.POST(设置位置共享, param));
+        lib.POST(设置位置共享, param);
     }
 
     @Override
@@ -412,7 +412,7 @@ public class Apis implements Api, Type, Color, Url {
         param.put("group", group);
         param.put("long", longs);
         param.put("lat", lat);
-        System.out.println(lib.POST(上报当前位置, param));
+        lib.POST(上报当前位置, param);
     }
 
     @Override
@@ -420,7 +420,7 @@ public class Apis implements Api, Type, Color, Url {
         Map<String, Object> param = new HashMap<String, Object>();
         param.put("logonqq", robot);
         param.put("group", group);
-        System.out.println(lib.POST(取禁言时长, param));
+        lib.POST(取禁言时长, param);
     }
 
     @Override
@@ -435,6 +435,6 @@ public class Apis implements Api, Type, Color, Url {
         param.put("eventtype", eventtype);
         param.put("reason", reason);
         param.put("isrisk", String.valueOf(isrisk));
-        System.out.println(lib.POST(处理群验证事件, param));
+        lib.POST(处理群验证事件, param);
     }
 }

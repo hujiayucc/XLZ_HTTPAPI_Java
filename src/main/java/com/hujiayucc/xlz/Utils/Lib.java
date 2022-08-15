@@ -20,17 +20,22 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
 import com.hujiayucc.xlz.Data.Config;
 
 @Service
+@Async
 public class Lib {
 
     private static String host = Config.getHost();
     private static String username = Config.getUsername();
     private static String password = Config.getPassword();
     private static String ua = Config.getUa();
+    private Logger logger = LoggerFactory.getLogger(getClass());
 
     /**
      * 获取Cookie
@@ -39,7 +44,8 @@ public class Lib {
      * @param time 时间截
      * @return Cookie信息
      */
-    public static String getCookie(String url, String time) {
+    @Async
+    public String getCookie(String url, String time) {
         String cookie = "user=" + username + ";timestamp=" + time + ";signature=" + getSignature(url, time);
         return cookie;
     }
@@ -51,7 +57,8 @@ public class Lib {
      * @param time 时间截
      * @return Signature
      */
-    private static String getSignature(String url, String time) {
+    @Async
+    private String getSignature(String url, String time) {
         // md5(用户名+请求路径+md5(密码)+timestamp)
         String signature = md5(username + url + md5(password) + time);
         return signature;
@@ -63,7 +70,8 @@ public class Lib {
      * @param text 需要加密的文本
      * @return md5加密文本
      */
-    private static String md5(String text) {
+    @Async
+    private String md5(String text) {
         return DigestUtils.md5DigestAsHex(text.getBytes());
     }
 
@@ -74,8 +82,8 @@ public class Lib {
      * @param post POST参数
      * @return POST返回数据
      */
-
-    public String POST(String url, Map<String, Object> param) {
+    @Async
+    public void POST(String url, Map<String, Object> param) {
         String time = Long.toString(System.currentTimeMillis() / 1000L);
         CloseableHttpClient httpClient = HttpClients.createDefault();
         String entityStr = null;
@@ -104,7 +112,7 @@ public class Lib {
             System.err.println("IO异常");
             e.printStackTrace();
         }
-        return entityStr;
+        logger.info(entityStr);
     }
 
     /**
@@ -113,7 +121,8 @@ public class Lib {
      * @param param POST参数数组
      * @return POST参数
      */
-    private static String toQueryString(Map<String, Object> param) {
+    @Async
+    private String toQueryString(Map<String, Object> param) {
         StringBuffer queryString = new StringBuffer();
         for (Entry<?, ?> pair : param.entrySet()) {
             try {
@@ -142,6 +151,7 @@ public class Lib {
      * @param leftStr 左边文本
      * @return 右边文本
      */
+    @Async
     public static String getRightstr(String str, String leftStr) {
         String rightStr = str.substring(str.indexOf(leftStr) + leftStr.length());
         return rightStr;
@@ -154,6 +164,7 @@ public class Lib {
      * @param rightStr 右边文本
      * @return 左边文本
      */
+    @Async
     public static String getLeftstr(String str, String rightStr) {
         String leftStr = str.substring(0, str.indexOf(rightStr));
         return leftStr;
@@ -167,6 +178,7 @@ public class Lib {
      * @param rightStr 右边文本
      * @return 中间文本
      */
+    @Async
     public static String getSubstr(String str, String leftStr, String rightStr) {
         String temp = getLeftstr(str, rightStr);
         temp = getRightstr(temp, leftStr);

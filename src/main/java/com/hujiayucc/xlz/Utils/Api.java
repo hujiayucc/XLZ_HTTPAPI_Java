@@ -5,9 +5,6 @@
  */
 package com.hujiayucc.xlz.Utils;
 
-import org.springframework.stereotype.Service;
-
-@Service
 public interface Api {
     /**
      * 输出日志

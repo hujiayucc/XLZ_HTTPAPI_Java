@@ -5,14 +5,12 @@
  */
 package com.hujiayucc.xlz.Plugins;
 
-import org.springframework.stereotype.Service;
 import com.hujiayucc.xlz.Utils.Api;
 import com.hujiayucc.xlz.Utils.Color;
 import com.hujiayucc.xlz.Utils.Lib;
 import com.hujiayucc.xlz.Utils.Plugins;
 import com.hujiayucc.xlz.Utils.Type;
 
-@Service
 public class 插件模板 implements Type, Plugins, Color {
 
     /**

@@ -7,6 +7,8 @@ package com.hujiayucc.xlz.Request;
 
 import java.util.HashMap;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -35,6 +37,7 @@ public class Request implements Type, Color {
     private static String privatemsg;
     private static String groupmsg;
     private static String event;
+    private Logger logger = LoggerFactory.getLogger(getClass());
 
     @Autowired
     private Apis api;
@@ -89,11 +92,11 @@ public class Request implements Type, Color {
         Plugins plugins = new 插件模板();
         switch (mod) {
             case 事件类型_私聊消息:
-                System.out.println("robot:" + robot.toString() + "  qq:" + qq.toString() + "  message:" + privatemsg);
+                logger.info("robot:" + robot.toString() + "  qq:" + qq.toString() + "  message:" + privatemsg);
                 plugins.privateMsg(robot, qq, privatemsg, type, api);
                 break;
             case 事件类型_群聊消息:
-                System.out.println("robot:" + robot.toString() + "  group:" + group.toString() + "  qq:" + qq.toString() + "  message:" + groupmsg);
+                logger.info("robot:" + robot.toString() + "  group:" + group.toString() + "  qq:" + qq.toString() + "  message:" + groupmsg);
                 plugins.groupMsg(robot, group, qq, groupmsg, type, api);
                 break;
             case 事件类型_事件:
