@@ -5,8 +5,11 @@
  */
 package com.hujiayucc.xlz.Utils;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public interface Plugins {
-    String privateMsg(Long robot, Long qq, String msg, String type, Api api);
-    String groupMsg(Long robot, Long group, Long qq, String msg, String type, Api api);
-    String Event(Long robot, Long group, Long qq, String msg, String type, Api api);
+    void privateMsg(Long robot, Long qq, String msg, String type, Api api);
+    void groupMsg(Long robot, Long group, Long qq, String msg, String type, Api api);
+    void Event(Long robot, Long group, Long qq, String msg, String type, Api api);
 }

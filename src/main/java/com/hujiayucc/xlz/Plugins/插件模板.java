@@ -5,17 +5,15 @@
  */
 package com.hujiayucc.xlz.Plugins;
 
-import org.springframework.stereotype.Controller;
-
+import org.springframework.stereotype.Service;
 import com.hujiayucc.xlz.Utils.Api;
 import com.hujiayucc.xlz.Utils.Color;
 import com.hujiayucc.xlz.Utils.Lib;
 import com.hujiayucc.xlz.Utils.Plugins;
 import com.hujiayucc.xlz.Utils.Type;
 
-@Controller
+@Service
 public class 插件模板 implements Type, Plugins, Color {
-    String ret = "null";
 
     /**
      * 私聊
@@ -27,11 +25,10 @@ public class 插件模板 implements Type, Plugins, Color {
      * @param api   调用API
      */
     @Override
-    public String privateMsg(Long robot, Long qq, String msg, String type, Api api) {
+    public void privateMsg(Long robot, Long qq, String msg, String type, Api api) {
         if (qq.equals(2792607647L)) {
-            ret = api.发送好友消息(robot, qq, msg, 发送消息_普通消息);
+            api.发送好友消息(robot, qq, msg, 发送消息_普通消息);
         }
-        return ret;
     }
 
     /**
@@ -45,23 +42,22 @@ public class 插件模板 implements Type, Plugins, Color {
      * @param api   调用API
      */
     @Override
-    public String groupMsg(Long robot, Long group, Long qq, String msg, String type, Api api) {
+    public void groupMsg(Long robot, Long group, Long qq, String msg, String type, Api api) {
         if (qq != 1908187655L) {
             if (msg.indexOf("咕咕咕") != -1 && !qq.equals(911782632L)) {
-                ret = api.发送群消息(robot, group, msg, 发送消息_普通消息, false);
+                api.发送群消息(robot, group, msg, 发送消息_普通消息, false);
             } else if (qq.equals(2792607647L) && msg.equals("测试Java")) {
-                ret = api.发送群消息(robot, group, msg, type, false);
+                api.发送群消息(robot, group, msg, type, false);
             } else if (msg.indexOf("复读" ) != -1) {
-                ret = api.发送群消息(robot, group, Lib.getRightstr(msg, "复读"), 发送消息_普通消息, false);
+                api.发送群消息(robot, group, Lib.getRightstr(msg, "复读"), 发送消息_普通消息, false);
             } else if (msg.indexOf("php") != -1 | msg.indexOf("PHP") != -1) {
                 msg = "小栗子:https://f.xiaolz.cn/thread-308-1-1.html\n\nGitee:https://gitee.com/hujiayucc/XLZ_HTTPAPI_PHP\n\nGitHub:https://github.com/hujiayucc/XLZ_HTTPAPI_PHP";
-                ret = api.发送群消息(robot, group, msg, 发送消息_普通消息, false);
+                api.发送群消息(robot, group, msg, 发送消息_普通消息, false);
             } else if (msg.indexOf("java") != -1 | msg.indexOf("Java") != -1) {
                 msg = "小栗子:https://f.xiaolz.cn/thread-487-1-1.html\n\nGitHub:https://github.com/hujiayucc/XLZ_HTTPAPI_Java\n\nGitee:https://gitee.com/hujiayucc/XLZ_HTTPAPI_Java";
-                ret = api.发送群消息(robot, group, msg, 发送消息_普通消息, false);
+                api.发送群消息(robot, group, msg, 发送消息_普通消息, false);
             }
         }
-        return ret;
     }
 
     /**
@@ -72,7 +68,7 @@ public class 插件模板 implements Type, Plugins, Color {
      * @param api   调用API
      */
     @Override
-    public String Event(Long robot, Long group, Long qq, String msg, String type, Api api) {
-        return ret;
+    public void Event(Long robot, Long group, Long qq, String msg, String type, Api api) {
+        
     }
 }

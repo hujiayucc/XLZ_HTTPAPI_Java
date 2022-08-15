@@ -35,7 +35,6 @@ public class Request implements Type, Color {
     private static String privatemsg;
     private static String groupmsg;
     private static String event;
-    private String ret;
 
     @Autowired
     private Apis api;
@@ -72,7 +71,7 @@ public class Request implements Type, Color {
             group = (groupJsonObject.getLong("group") == null) ? 0L : groupJsonObject.getLong("group");
             privatemsg = (msgJsonObject.getString("text") == null) ? "null" : msgJsonObject.getString("text");
             groupmsg = (msgJsonObject.getString("msg") == null) ? "null" : msgJsonObject.getString("msg");
-            runPlugins(type, new 插件模板());
+            runPlugins(type);
             return new ResponseEntity<String>("", HttpStatus.OK);
         } else {
             data.put("code", 502);
@@ -86,24 +85,19 @@ public class Request implements Type, Color {
      * @param mod 事件类型
      * @param plugins @Resource的Api
      */
-    private void runPlugins(String mod, Plugins plugins) {
+    private void runPlugins(String mod) {
+        Plugins plugins = new 插件模板();
         switch (mod) {
             case 事件类型_私聊消息:
                 System.out.println("robot:" + robot.toString() + "  qq:" + qq.toString() + "  message:" + privatemsg);
-                ret = plugins.privateMsg(robot, qq, privatemsg, type, api);
-                if(!ret.equals("null"))
-                    System.out.println(ret);
+                plugins.privateMsg(robot, qq, privatemsg, type, api);
                 break;
             case 事件类型_群聊消息:
                 System.out.println("robot:" + robot.toString() + "  group:" + group.toString() + "  qq:" + qq.toString() + "  message:" + groupmsg);
-                ret = plugins.groupMsg(robot, group, qq, groupmsg, type, api);
-                if(!ret.equals("null"))
-                    System.out.println(ret);
+                plugins.groupMsg(robot, group, qq, groupmsg, type, api);
                 break;
             case 事件类型_事件:
-                ret = plugins.Event(robot, group, qq, event, type, api);
-                if(!ret.equals("null"))
-                    System.out.println(ret);
+                plugins.Event(robot, group, qq, event, type, api);
                 break;
             default:
                 break;
