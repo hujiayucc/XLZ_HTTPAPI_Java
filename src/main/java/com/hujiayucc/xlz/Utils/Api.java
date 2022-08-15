@@ -390,7 +390,8 @@ public class Api implements Type, Color, Url {
                 param.put("discussionid", qq);
                 break;
             default:
-                System.out.println("type参数错误");;
+                System.out.println("type参数错误");
+                ;
                 return;
         }
         param.put("random", random);

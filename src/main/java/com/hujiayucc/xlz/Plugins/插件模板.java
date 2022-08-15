@@ -51,7 +51,7 @@ public class 插件模板 implements Type, Plugins, Color {
                 api.发送群消息(robot, group, msg, 发送消息_普通消息, false);
             } else if (qq.equals(2792607647L) && msg.equals("测试Java")) {
                 api.发送群消息(robot, group, msg, type, false);
-            } else if (msg.indexOf("复读" ) != -1) {
+            } else if (msg.indexOf("复读") != -1) {
                 api.发送群消息(robot, group, Lib.getRightstr(msg, "复读"), 发送消息_普通消息, false);
             } else if (msg.indexOf("php") != -1 | msg.indexOf("PHP") != -1) {
                 msg = "小栗子:https://f.xiaolz.cn/thread-308-1-1.html\n\nGitee:https://gitee.com/hujiayucc/XLZ_HTTPAPI_PHP\n\nGitHub:https://github.com/hujiayucc/XLZ_HTTPAPI_PHP";
@@ -73,6 +73,6 @@ public class 插件模板 implements Type, Plugins, Color {
     @Override
     @Async("xlz")
     public void Event(Long robot, Long group, Long qq, String msg, String type, Api api) {
-        
+
     }
 }

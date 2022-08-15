@@ -78,5 +78,4 @@ public class Config implements Color, Type, Url {
         return UA;
     }
 
-    
 }

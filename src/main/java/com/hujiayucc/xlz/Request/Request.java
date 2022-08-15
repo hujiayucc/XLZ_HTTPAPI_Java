@@ -82,10 +82,11 @@ public class Request implements Type, Color {
             return new ResponseEntity<String>(JSON.toJSONString(data), HttpStatus.BAD_GATEWAY);
         }
     }
+
     /**
      * 运行插件
      * 
-     * @param mod 事件类型
+     * @param mod     事件类型
      * @param plugins @Resource的Api
      */
     private void runPlugins(String mod) {
@@ -96,7 +97,8 @@ public class Request implements Type, Color {
                 plugins.privateMsg(robot, qq, privatemsg, type, api);
                 break;
             case 事件类型_群聊消息:
-                logger.info("robot:" + robot.toString() + "  group:" + group.toString() + "  qq:" + qq.toString() + "  message:" + groupmsg);
+                logger.info("robot:" + robot.toString() + "  group:" + group.toString() + "  qq:" + qq.toString()
+                        + "  message:" + groupmsg);
                 plugins.groupMsg(robot, group, qq, groupmsg, type, api);
                 break;
             case 事件类型_事件:

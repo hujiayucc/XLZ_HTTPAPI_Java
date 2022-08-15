@@ -11,8 +11,10 @@ import org.springframework.scheduling.annotation.Async;
 public interface Plugins {
     @Async("xlz")
     void privateMsg(Long robot, Long qq, String msg, String type, Api api);
+
     @Async("xlz")
     void groupMsg(Long robot, Long group, Long qq, String msg, String type, Api api);
+
     @Async("xlz")
     void Event(Long robot, Long group, Long qq, String msg, String type, Api api);
 }
