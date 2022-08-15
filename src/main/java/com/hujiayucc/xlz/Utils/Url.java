@@ -43,7 +43,6 @@ public interface Url {
     public static final String 上传群头像 = "/uploadgroupfacepic";
     public static final String 全员禁言 = "/mutegroup";
     public static final String 设置群权限 = "/setgrouppriv";
-    public static final String 设置群权限2 = "/setgrouppriv";
     public static final String 撤回消息 = "/deletemsg";
     public static final String 设置位置共享 = "/setsharepos";
     public static final String 上报当前位置 = "/uploadpos";
