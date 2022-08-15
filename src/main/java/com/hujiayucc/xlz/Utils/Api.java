@@ -143,4 +143,18 @@ public interface Api {
 
     String 全员禁言(Long robot, Long group, boolean ismute);
 
+    String 设置群权限(Long robot, Long group, String type, boolean isallow);
+
+    String 设置群权限2(Long robot, Long group, String type, int value);
+
+    String 撤回消息(Long robot, Long qqorgroup, String type, Long random, Long req, Long time);
+
+    String 设置位置共享(Long robot,Long group, String longs, String lat, boolean enable);
+
+    String 上报当前位置(Long robot, Long group, String longs, String lat);
+
+    String 取禁言时长(Long robot, Long group);
+
+    String 处理群验证事件(Long robot, Long group, Long qq, Long seq, int optype, int eventtype, String reason, boolean isrisk);
+
 }
