@@ -5,12 +5,15 @@
  */
 package com.hujiayucc.xlz.Plugins;
 
+import org.springframework.scheduling.annotation.Async;
+
 import com.hujiayucc.xlz.Utils.Api;
 import com.hujiayucc.xlz.Utils.Color;
 import com.hujiayucc.xlz.Utils.Lib;
 import com.hujiayucc.xlz.Utils.Plugins;
 import com.hujiayucc.xlz.Utils.Type;
 
+@Async("xlz")
 public class 插件模板 implements Type, Plugins, Color {
 
     /**
@@ -23,6 +26,7 @@ public class 插件模板 implements Type, Plugins, Color {
      * @param api   调用API
      */
     @Override
+    @Async("xlz")
     public void privateMsg(Long robot, Long qq, String msg, String type, Api api) {
         if (qq.equals(2792607647L)) {
             api.发送好友消息(robot, qq, msg, 发送消息_普通消息);
@@ -40,6 +44,7 @@ public class 插件模板 implements Type, Plugins, Color {
      * @param api   调用API
      */
     @Override
+    @Async("xlz")
     public void groupMsg(Long robot, Long group, Long qq, String msg, String type, Api api) {
         if (qq != 1908187655L) {
             if (msg.indexOf("咕咕咕") != -1 && !qq.equals(911782632L)) {
@@ -66,6 +71,7 @@ public class 插件模板 implements Type, Plugins, Color {
      * @param api   调用API
      */
     @Override
+    @Async("xlz")
     public void Event(Long robot, Long group, Long qq, String msg, String type, Api api) {
         
     }

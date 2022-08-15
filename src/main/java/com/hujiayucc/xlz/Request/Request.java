@@ -23,7 +23,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.hujiayucc.xlz.Data.Config;
 import com.hujiayucc.xlz.Plugins.插件模板;
-import com.hujiayucc.xlz.Utils.Apis;
+import com.hujiayucc.xlz.Utils.Api;
 import com.hujiayucc.xlz.Utils.Color;
 import com.hujiayucc.xlz.Utils.Plugins;
 import com.hujiayucc.xlz.Utils.Type;
@@ -40,7 +40,7 @@ public class Request implements Type, Color {
     private Logger logger = LoggerFactory.getLogger(getClass());
 
     @Autowired
-    private Apis api;
+    private Api api;
 
     @GetMapping(value = "/getconfig", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody

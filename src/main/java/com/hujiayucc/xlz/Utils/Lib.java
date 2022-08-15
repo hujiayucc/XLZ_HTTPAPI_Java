@@ -28,14 +28,14 @@ import org.springframework.util.DigestUtils;
 import com.hujiayucc.xlz.Data.Config;
 
 @Service
-@Async
+@Async("xlz")
 public class Lib {
 
     private static String host = Config.getHost();
     private static String username = Config.getUsername();
     private static String password = Config.getPassword();
     private static String ua = Config.getUa();
-    private Logger logger = LoggerFactory.getLogger(getClass());
+    private static Logger logger = LoggerFactory.getLogger(host);
 
     /**
      * 获取Cookie
@@ -44,9 +44,10 @@ public class Lib {
      * @param time 时间截
      * @return Cookie信息
      */
-    @Async
+    @Async("xlz")
     public String getCookie(String url, String time) {
         String cookie = "user=" + username + ";timestamp=" + time + ";signature=" + getSignature(url, time);
+        logger.debug("Cookie:" + cookie);
         return cookie;
     }
 
@@ -57,10 +58,11 @@ public class Lib {
      * @param time 时间截
      * @return Signature
      */
-    @Async
+    @Async("xlz")
     private String getSignature(String url, String time) {
         // md5(用户名+请求路径+md5(密码)+timestamp)
         String signature = md5(username + url + md5(password) + time);
+        logger.debug("signature:" + signature);
         return signature;
     }
 
@@ -70,7 +72,7 @@ public class Lib {
      * @param text 需要加密的文本
      * @return md5加密文本
      */
-    @Async
+    @Async("xlz")
     private String md5(String text) {
         return DigestUtils.md5DigestAsHex(text.getBytes());
     }
@@ -82,7 +84,7 @@ public class Lib {
      * @param post POST参数
      * @return POST返回数据
      */
-    @Async
+    @Async("xlz")
     public void POST(String url, Map<String, Object> param) {
         String time = Long.toString(System.currentTimeMillis() / 1000L);
         CloseableHttpClient httpClient = HttpClients.createDefault();
@@ -121,7 +123,7 @@ public class Lib {
      * @param param POST参数数组
      * @return POST参数
      */
-    @Async
+    @Async("xlz")
     private String toQueryString(Map<String, Object> param) {
         StringBuffer queryString = new StringBuffer();
         for (Entry<?, ?> pair : param.entrySet()) {
@@ -141,6 +143,7 @@ public class Lib {
         if (queryString.length() > 0) {
             queryString.deleteCharAt(queryString.length() - 1);
         }
+        logger.debug("POST:" + queryString);
         return queryString.toString();
     }
 
@@ -151,9 +154,10 @@ public class Lib {
      * @param leftStr 左边文本
      * @return 右边文本
      */
-    @Async
+    @Async("xlz")
     public static String getRightstr(String str, String leftStr) {
         String rightStr = str.substring(str.indexOf(leftStr) + leftStr.length());
+        logger.debug("RightStr:" + rightStr);
         return rightStr;
     }
 
@@ -164,9 +168,10 @@ public class Lib {
      * @param rightStr 右边文本
      * @return 左边文本
      */
-    @Async
+    @Async("xlz")
     public static String getLeftstr(String str, String rightStr) {
         String leftStr = str.substring(0, str.indexOf(rightStr));
+        logger.debug("LeftStr:" + leftStr);
         return leftStr;
     }
 
@@ -178,10 +183,11 @@ public class Lib {
      * @param rightStr 右边文本
      * @return 中间文本
      */
-    @Async
+    @Async("xlz")
     public static String getSubstr(String str, String leftStr, String rightStr) {
         String temp = getLeftstr(str, rightStr);
         temp = getRightstr(temp, leftStr);
+        logger.debug("SubStr:" + temp);
         return temp;
     }
 }

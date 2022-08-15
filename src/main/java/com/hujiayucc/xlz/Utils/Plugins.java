@@ -7,12 +7,12 @@ package com.hujiayucc.xlz.Utils;
 
 import org.springframework.scheduling.annotation.Async;
 
-@Async
+@Async("xlz")
 public interface Plugins {
-    @Async
+    @Async("xlz")
     void privateMsg(Long robot, Long qq, String msg, String type, Api api);
-    @Async
+    @Async("xlz")
     void groupMsg(Long robot, Long group, Long qq, String msg, String type, Api api);
-    @Async
+    @Async("xlz")
     void Event(Long robot, Long group, Long qq, String msg, String type, Api api);
 }

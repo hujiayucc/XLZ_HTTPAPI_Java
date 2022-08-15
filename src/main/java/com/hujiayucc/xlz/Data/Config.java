@@ -8,6 +8,7 @@ package com.hujiayucc.xlz.Data;
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import com.hujiayucc.xlz.Utils.Color;
@@ -21,6 +22,7 @@ import com.hujiayucc.xlz.Utils.Url;
  */
 
 @Service
+@Async("xlz")
 public class Config implements Color, Type, Url {
     @Value("${server.port}")
     private String port;
@@ -41,6 +43,7 @@ public class Config implements Color, Type, Url {
     private static String UA;
 
     @PostConstruct
+    @Async("xlz")
     public void setDate() {
         Port = this.port;
         Host = this.host;
@@ -50,22 +53,27 @@ public class Config implements Color, Type, Url {
     }
 
     // 获取静态化配置
+    @Async("xlz")
     public static String getPort() {
         return Port;
     }
 
+    @Async("xlz")
     public static String getHost() {
         return Host;
     }
 
+    @Async("xlz")
     public static String getUsername() {
         return UserName;
     }
 
+    @Async("xlz")
     public static String getPassword() {
         return PassWord;
     }
 
+    @Async("xlz")
     public static String getUa() {
         return UA;
     }
