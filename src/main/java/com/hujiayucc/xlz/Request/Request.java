@@ -42,7 +42,7 @@ public class Request implements Type, Color {
             return new ResponseEntity<String>(json, HttpStatus.OK);
         } else {
             data.put("code", 502);
-            return new ResponseEntity<String>(Config.getHost(), HttpStatus.OK);
+            return new ResponseEntity<String>(JSON.toJSONString(data), HttpStatus.BAD_GATEWAY);
         }
     }
 
