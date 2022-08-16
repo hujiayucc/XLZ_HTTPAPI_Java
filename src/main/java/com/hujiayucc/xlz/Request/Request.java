@@ -49,11 +49,11 @@ public class Request implements Type, Color {
     @PostMapping(value = "/msg", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     private ResponseEntity<String> msg(@RequestHeader("Password") String CT, @RequestBody String param) {
-        HashMap<String, Object> data = new HashMap<>();
         if (CT.equals(Config.getPassword())) {
             plugins.run(param);
-            return new ResponseEntity<String>("", HttpStatus.OK);
+            return new ResponseEntity<String>("Success", HttpStatus.OK);
         } else {
+            HashMap<String, Object> data = new HashMap<>();
             data.put("code", 502);
             data.put("text", "password error");
             return new ResponseEntity<String>(JSON.toJSONString(data), HttpStatus.BAD_GATEWAY);

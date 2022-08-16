@@ -25,6 +25,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
+
+import com.alibaba.fastjson.JSONObject;
 import com.hujiayucc.xlz.Data.Config;
 
 @Service
@@ -47,7 +49,7 @@ public class Lib {
     @Async("xlz")
     public String getCookie(String url, String time) {
         String cookie = "user=" + username + ";timestamp=" + time + ";signature=" + getSignature(url, time);
-        logger.debug("Cookie:" + cookie);
+        logger.info("Cookie:" + cookie);
         return cookie;
     }
 
@@ -62,7 +64,7 @@ public class Lib {
     private String getSignature(String url, String time) {
         // md5(用户名+请求路径+md5(密码)+timestamp)
         String signature = md5(username + url + md5(password) + time);
-        logger.debug("signature:" + signature);
+        logger.info("Signature:" + signature);
         return signature;
     }
 
@@ -97,6 +99,7 @@ public class Lib {
             post.addHeader("H-Auth-Signature", getSignature(url, time));
             post.addHeader("H-Auth-Timestamp", time);
             post.addHeader(HttpHeaders.USER_AGENT, ua);
+            post.addHeader("Cookie", getCookie(url, time));
             HttpEntity entity = new StringEntity(toQueryString(param), "UTF-8");
             post.setEntity(entity);
             response = httpClient.execute(post);
@@ -105,16 +108,17 @@ public class Lib {
             // 使用Apache提供的工具类进行转换成字符串
             entityStr = EntityUtils.toString(httpEntity, "UTF-8");
         } catch (ClientProtocolException e) {
-            System.err.println("Http协议出现问题");
+            logger.error("Http协议出现问题");
             e.printStackTrace();
         } catch (ParseException e) {
-            System.err.println("解析错误");
+            logger.error("解析错误");
             e.printStackTrace();
         } catch (IOException e) {
-            System.err.println("IO异常");
+            logger.error("IO异常");
             e.printStackTrace();
         }
-        logger.info(entityStr);
+        JSONObject jsonObject = JSONObject.parseObject(entityStr);
+        logger.info((jsonObject.getString("ret") == null) ? "null" : jsonObject.getString("ret"));
     }
 
     /**
@@ -157,7 +161,7 @@ public class Lib {
     @Async("xlz")
     public static String getRightstr(String str, String leftStr) {
         String rightStr = str.substring(str.indexOf(leftStr) + leftStr.length());
-        logger.debug("RightStr:" + rightStr);
+        logger.info("RightStr:" + rightStr);
         return rightStr;
     }
 
@@ -171,7 +175,7 @@ public class Lib {
     @Async("xlz")
     public static String getLeftstr(String str, String rightStr) {
         String leftStr = str.substring(0, str.indexOf(rightStr));
-        logger.debug("LeftStr:" + leftStr);
+        logger.info("LeftStr:" + leftStr);
         return leftStr;
     }
 
@@ -187,7 +191,7 @@ public class Lib {
     public static String getSubstr(String str, String leftStr, String rightStr) {
         String temp = getLeftstr(str, rightStr);
         temp = getRightstr(temp, leftStr);
-        logger.debug("SubStr:" + temp);
+        logger.info("SubStr:" + temp);
         return temp;
     }
 }

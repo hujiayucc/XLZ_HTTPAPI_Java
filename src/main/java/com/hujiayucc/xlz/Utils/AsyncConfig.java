@@ -27,9 +27,9 @@ public class AsyncConfig {
          */
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
         // 线程池维护线程的最少数量
-        executor.setCorePoolSize(50);
+        executor.setCorePoolSize(15);
         // 线程池维护线程的最大数量
-        executor.setMaxPoolSize(300);
+        executor.setMaxPoolSize(100);
         // 设置线程池中任务的等待时间
         executor.setAwaitTerminationSeconds(60);
         // 线程池所使用的缓冲队列
