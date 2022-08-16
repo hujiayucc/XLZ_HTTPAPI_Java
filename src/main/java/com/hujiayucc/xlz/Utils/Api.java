@@ -389,7 +389,6 @@ public class Api implements Type, Color, Url {
                 break;
             default:
                 System.out.println("type参数错误");
-                ;
                 return;
         }
         param.put("random", random);
@@ -439,5 +438,171 @@ public class Api implements Type, Color, Url {
         param.put("reason", reason);
         param.put("isrisk", String.valueOf(isrisk));
         lib.POST(处理群验证事件, param);
+    }
+
+    @Async("xlz")
+    public void 处理好友验证事件(Long robot, Long qq, Long seq, int optype) {
+        Map<String, Object> param = new HashMap<String, Object>();
+        param.put("logonqq", robot);
+        param.put("fromqq", qq);
+        param.put("seq", seq);
+        param.put("optype", optype);
+        lib.POST(处理好友验证事件, param);
+    }
+
+    @Async("xlz")
+    public void 获取转发聊天记录内容(Long robot, String resid) {
+        Map<String, Object> param = new HashMap<String, Object>();
+        param.put("logonqq", robot);
+        param.put("resid", resid);
+        lib.POST(获取转发聊天记录内容, param);
+    }
+
+    @Async("xlz")
+    public void 上传群文件(Long robot, Long group, String localpath, String remotepath, boolean wait) {
+        Map<String, Object> param = new HashMap<String, Object>();
+        param.put("logonqq", robot);
+        param.put("group", group);
+        param.put("localpath", localpath);
+        param.put("remotepath", remotepath);
+        param.put("wait", String.valueOf(wait));
+        lib.POST(上传群文件, param);
+    }
+
+    @Async("xlz")
+    public void 创建群文件夹(Long robot, Long group, String name) {
+        Map<String, Object> param = new HashMap<String, Object>();
+        param.put("logonqq", robot);
+        param.put("group", group);
+        param.put("name", name);
+        lib.POST(创建群文件夹, param);
+    }
+
+    @Async("xlz")
+    public void 重命名群文件夹(Long robot, Long group, String oldname, String newname) {
+        Map<String, Object> param = new HashMap<String, Object>();
+        param.put("logonqq", robot);
+        param.put("group", group);
+        param.put("oldname", oldname);
+        param.put("newname", newname);
+        lib.POST(重命名群文件夹, param);
+    }
+
+    @Async("xlz")
+    public void 删除群文件夹(Long robot, Long group, String name) {
+        Map<String, Object> param = new HashMap<String, Object>();
+        param.put("logonqq", robot);
+        param.put("group", group);
+        param.put("name", name);
+        lib.POST(删除群文件夹, param);
+    }
+
+    @Async("xlz")
+    public void 删除群文件(Long robot, Long group, String fileid, String folder) {
+        Map<String, Object> param = new HashMap<String, Object>();
+        param.put("logonqq", robot);
+        param.put("group", group);
+        param.put("fileid", fileid);
+        param.put("folder", folder);
+        lib.POST(删除群文件, param);
+    }
+
+    @Async("xlz")
+    public void 保存文件到微云(Long robot, Long group, String fileid) {
+        Map<String, Object> param = new HashMap<String, Object>();
+        param.put("logonqq", robot);
+        param.put("group", group);
+        param.put("fileid", fileid);
+        lib.POST(保存文件到微云, param);
+    }
+
+    @Async("xlz")
+    public void 移动群文件(Long robot, Long group, String fileid, String folder) {
+        Map<String, Object> param = new HashMap<String, Object>();
+        param.put("logonqq", robot);
+        param.put("group", group);
+        param.put("fileid", fileid);
+        param.put("folder", folder);
+        lib.POST(移动群文件, param);
+    }
+
+    @Async("xlz")
+    public void 取群文件列表(Long robot, Long group, String folder) {
+        Map<String, Object> param = new HashMap<String, Object>();
+        param.put("logonqq", robot);
+        param.put("group", group);
+        param.put("folder", folder);
+        lib.POST(取群文件列表, param);
+    }
+
+    @Async("xlz")
+    public void 设置在线状态(Long robot, int main, int sun) {
+        Map<String, Object> param = new HashMap<String, Object>();
+        param.put("logonqq", robot);
+        param.put("main", main);
+        param.put("sun", sun);
+        lib.POST(设置在线状态, param);
+    }
+
+    @Async("xlz")
+    public void QQ点赞(Long robot, Long qq) {
+        Map<String, Object> param = new HashMap<String, Object>();
+        param.put("logonqq", robot);
+        param.put("toqq", qq);
+        lib.POST(QQ点赞, param);
+    }
+
+    @Async("xlz")
+    public void 查询群信息(Long robot, Long group) {
+        Map<String, Object> param = new HashMap<String, Object>();
+        param.put("logonqq", robot);
+        param.put("group", group);
+        lib.POST(查询群信息, param);
+    }
+
+    @Async("xlz")
+    public void 转发文件(Long robot, Long qq, Long toqq, int type, String fileid, String filename, String filesize) {
+        Map<String, Object> param = new HashMap<String, Object>();
+        param.put("logonqq", robot);
+        switch (type) {
+            case 文件转发_群文件转发至群:
+                param.put("fromgroup", qq);
+                param.put("togroup", toqq);
+                break;
+            case 文件转发_群文件转发至好友:
+                param.put("fromgroup", qq);
+                param.put("toqq", toqq);
+                param.put("filename", filename);
+                param.put("filesize", filesize);
+                break;
+            case 文件转发_好友文件转发至好友:
+                param.put("fromqq", qq);
+                param.put("toqq", toqq);
+                param.put("filename", filename);
+                param.put("filesize", filesize);
+                break;
+            case 文件转发_讨论组文件转发至群:
+                param.put("togroup", toqq);
+                param.put("filename", filename);
+                param.put("filesize", filesize);
+                break;
+            case 文件转发_讨论组文件转发至好友:
+                param.put("toqq", toqq);
+                param.put("filename", filename);
+                param.put("filesize", filesize);
+            default:
+                return;
+        }
+        param.put("fileod", fileid);
+        lib.POST(转发文件, param);
+    }
+
+    @Async("xlz")
+    public void 置群消息接收(Long robot, Long group, int settype) {
+        Map<String, Object> param = new HashMap<String, Object>();
+        param.put("logonqq", robot);
+        param.put("group", group);
+        param.put("settype", settype);
+        lib.POST(置群消息接收, param);
     }
 }

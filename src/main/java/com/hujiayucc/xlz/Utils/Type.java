@@ -42,4 +42,14 @@ public interface Type {
     public static final String 撤回类型_群聊 = "group";
     public static final String 撤回类型_讨论组 = "discussion";
 
+    public static final int 文件转发_群文件转发至群 = 1;
+    public static final int 文件转发_群文件转发至好友 = 2;
+    public static final int 文件转发_好友文件转发至好友 = 3;
+    public static final int 文件转发_讨论组文件转发至群 = 4;
+    public static final int 文件转发_讨论组文件转发至好友 = 5;
+    
+    public static final int 群消息接收_接收并提醒 = 1;
+    public static final int 群消息接收_收进群助手 = 2;
+    public static final int 群消息接收_屏蔽群消息 = 3;
+    public static final int 群消息接收_接收不提醒 = 4;
 }
