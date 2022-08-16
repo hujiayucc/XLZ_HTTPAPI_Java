@@ -49,7 +49,7 @@ public class Lib {
     @Async("xlz")
     public String getCookie(String url, String time) {
         String cookie = "user=" + username + ";timestamp=" + time + ";signature=" + getSignature(url, time);
-        logger.info("Cookie:" + cookie);
+        logger.info("\u001b[38;5;10mCookie:\u001b[38;5;14m" + cookie);
         return cookie;
     }
 
@@ -64,7 +64,7 @@ public class Lib {
     private String getSignature(String url, String time) {
         // md5(用户名+请求路径+md5(密码)+timestamp)
         String signature = md5(username + url + md5(password) + time);
-        logger.info("Signature:" + signature);
+        logger.info("\u001b[38;5;10mSignature:\u001b[38;5;14m" + signature);
         return signature;
     }
 
@@ -108,17 +108,17 @@ public class Lib {
             // 使用Apache提供的工具类进行转换成字符串
             entityStr = EntityUtils.toString(httpEntity, "UTF-8");
         } catch (ClientProtocolException e) {
-            logger.error("Http协议出现问题");
+            logger.error("\u001b[38;5;8mHttp协议出现问题");
             e.printStackTrace();
         } catch (ParseException e) {
-            logger.error("解析错误");
+            logger.error("\u001b[38;5;8m解析错误");
             e.printStackTrace();
         } catch (IOException e) {
-            logger.error("IO异常");
+            logger.error("\u001b[38;5;8mIO异常");
             e.printStackTrace();
         }
         JSONObject jsonObject = JSONObject.parseObject(entityStr);
-        logger.info((jsonObject.getString("ret") == null) ? "null" : jsonObject.getString("ret"));
+        logger.info("\u001b[38;5;51m" + jsonObject.getString("ret"));
     }
 
     /**
@@ -138,8 +138,7 @@ public class Lib {
             }
             try {
                 queryString.append(
-                        URLEncoder.encode((pair.getValue() == null) ? "null" : pair.getValue().toString(), "UTF-8")
-                                + "&");
+                        URLEncoder.encode((pair.getValue() == null) ? "null" : pair.getValue().toString(), "UTF-8") + "&");
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
             }
@@ -147,7 +146,7 @@ public class Lib {
         if (queryString.length() > 0) {
             queryString.deleteCharAt(queryString.length() - 1);
         }
-        logger.debug("POST:" + queryString);
+        logger.info("\u001b[38;5;10mPOST:\u001b[38;5;14m" + queryString);
         return queryString.toString();
     }
 
@@ -161,7 +160,7 @@ public class Lib {
     @Async("xlz")
     public static String getRightstr(String str, String leftStr) {
         String rightStr = str.substring(str.indexOf(leftStr) + leftStr.length());
-        logger.info("RightStr:" + rightStr);
+        logger.info("\u001b[38;5;10mRightStr:\u001b[38;5;14m" + rightStr);
         return rightStr;
     }
 
@@ -175,7 +174,7 @@ public class Lib {
     @Async("xlz")
     public static String getLeftstr(String str, String rightStr) {
         String leftStr = str.substring(0, str.indexOf(rightStr));
-        logger.info("LeftStr:" + leftStr);
+        logger.info("\u001b[38;5;10mLeftStr:\u001b[38;5;14m" + leftStr);
         return leftStr;
     }
 
@@ -191,7 +190,7 @@ public class Lib {
     public static String getSubstr(String str, String leftStr, String rightStr) {
         String temp = getLeftstr(str, rightStr);
         temp = getRightstr(temp, leftStr);
-        logger.info("SubStr:" + temp);
+        logger.info("\u001b[38;5;10mSubStr:\u001b[38;5;14m" + temp);
         return temp;
     }
 }

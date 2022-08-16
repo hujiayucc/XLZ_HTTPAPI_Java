@@ -55,12 +55,16 @@ public class Plugin implements Type {
     private void runPlugins(String mod) {
         switch (mod) {
             case 事件类型_私聊消息:
-                logger.info("RobotQQ:" + robot.toString() + " FromQQ:" + qq.toString() + " Message:" + privatemsg);
+                logger.info("\u001b[38;5;204mRobotQQ:\u001b[38;5;132m" + robot.toString()
+                        + " \u001b[38;5;207mFromQQ:\u001b[38;5;135m" + qq.toString() + " \u001b[38;5;219mMessage:\u001b[38;5;183m"
+                        + privatemsg);
                 plugins.privateMsg(robot, qq, privatemsg, type);
                 break;
             case 事件类型_群聊消息:
-                logger.info("RobotQQ:" + robot.toString() + " FromGroup:" + group.toString() + " FromQQ:" + qq.toString()
-                        + " Message:" + groupmsg);
+                logger.info("\u001b[38;5;204mRobotQQ:\u001b[38;5;132m" + robot.toString()
+                        + " \u001b[38;5;202mFromGroup:\u001b[38;5;130m" + group.toString()
+                        + " \u001b[38;5;207mFromQQ:\u001b[38;5;135m" + qq.toString()
+                        + " \u001b[38;5;219mMessage:\u001b[38;5;183m" + groupmsg);
                 plugins.groupMsg(robot, group, qq, groupmsg, type);
                 break;
             case 事件类型_事件:
