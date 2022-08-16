@@ -29,7 +29,7 @@ import org.springframework.util.DigestUtils;
 import com.alibaba.fastjson.JSONObject;
 import com.hujiayucc.xlz.Data.Config;
 
-@Service
+@Service("lib")
 @Async("xlz")
 public class Lib {
 
@@ -49,7 +49,7 @@ public class Lib {
     @Async("xlz")
     public String getCookie(String url, String time) {
         String cookie = "user=" + username + ";timestamp=" + time + ";signature=" + getSignature(url, time);
-        logger.info("\u001b[38;5;10mCookie:\u001b[38;5;14m" + cookie);
+        logger.debug("\u001b[38;5;10mCookie:\u001b[38;5;14m" + cookie);
         return cookie;
     }
 
@@ -64,7 +64,7 @@ public class Lib {
     private String getSignature(String url, String time) {
         // md5(用户名+请求路径+md5(密码)+timestamp)
         String signature = md5(username + url + md5(password) + time);
-        logger.info("\u001b[38;5;10mSignature:\u001b[38;5;14m" + signature);
+        logger.debug("\u001b[38;5;10mSignature:\u001b[38;5;14m" + signature);
         return signature;
     }
 
@@ -146,7 +146,7 @@ public class Lib {
         if (queryString.length() > 0) {
             queryString.deleteCharAt(queryString.length() - 1);
         }
-        logger.info("\u001b[38;5;10mPOST:\u001b[38;5;14m" + queryString);
+        logger.debug("\u001b[38;5;10mPOST:\u001b[38;5;14m" + queryString);
         return queryString.toString();
     }
 
@@ -160,7 +160,7 @@ public class Lib {
     @Async("xlz")
     public static String getRightstr(String str, String leftStr) {
         String rightStr = str.substring(str.indexOf(leftStr) + leftStr.length());
-        logger.info("\u001b[38;5;10mRightStr:\u001b[38;5;14m" + rightStr);
+        logger.debug("\u001b[38;5;10mRightStr:\u001b[38;5;14m" + rightStr);
         return rightStr;
     }
 
@@ -174,7 +174,7 @@ public class Lib {
     @Async("xlz")
     public static String getLeftstr(String str, String rightStr) {
         String leftStr = str.substring(0, str.indexOf(rightStr));
-        logger.info("\u001b[38;5;10mLeftStr:\u001b[38;5;14m" + leftStr);
+        logger.debug("\u001b[38;5;10mLeftStr:\u001b[38;5;14m" + leftStr);
         return leftStr;
     }
 
@@ -190,7 +190,7 @@ public class Lib {
     public static String getSubstr(String str, String leftStr, String rightStr) {
         String temp = getLeftstr(str, rightStr);
         temp = getRightstr(temp, leftStr);
-        logger.info("\u001b[38;5;10mSubStr:\u001b[38;5;14m" + temp);
+        logger.debug("\u001b[38;5;10mSubStr:\u001b[38;5;14m" + temp);
         return temp;
     }
 }

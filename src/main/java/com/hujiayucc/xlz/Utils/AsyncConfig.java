@@ -27,15 +27,15 @@ public class AsyncConfig {
          */
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
         // 线程池维护线程的最少数量
-        executor.setCorePoolSize(15);
+        executor.setCorePoolSize(30);
         // 线程池维护线程的最大数量
-        executor.setMaxPoolSize(100);
+        executor.setMaxPoolSize(30);
         // 设置线程池中任务的等待时间
-        executor.setAwaitTerminationSeconds(60);
+        executor.setAwaitTerminationSeconds(1);
         // 线程池所使用的缓冲队列
-        executor.setQueueCapacity(200);
+        executor.setQueueCapacity(10000);
         // 线程池维护线程所允许的空闲时间
-        executor.setKeepAliveSeconds(200);
+        executor.setKeepAliveSeconds(5);
         // 线程池的前缀名称
         executor.setThreadNamePrefix("xlz-Thread-");
         // rejection-policy：当pool已经达到max size的时候，如何处理新任务

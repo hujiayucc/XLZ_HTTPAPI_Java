@@ -21,7 +21,7 @@ import com.hujiayucc.xlz.Utils.Url;
  * @Description: 配置读取
  */
 
-@Service
+@Service("config")
 @Async("xlz")
 public class Config implements Color, Type, Url {
     @Value("${server.port}")

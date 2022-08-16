@@ -14,7 +14,7 @@ import com.hujiayucc.xlz.Utils.Color;
 import com.hujiayucc.xlz.Utils.Lib;
 import com.hujiayucc.xlz.Utils.Type;
 
-@Service
+@Service("plugins")
 @Async("xlz")
 public class Plugins implements Type, Color {
 

@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 import com.alibaba.fastjson.JSONObject;
 import com.hujiayucc.xlz.Plugins.Plugins;
 
-@Service
+@Service("plugin")
 @Async("xlz")
 public class Plugin implements Type {
     private String type;

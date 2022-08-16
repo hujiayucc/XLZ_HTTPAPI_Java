@@ -9,6 +9,9 @@ public interface Type {
     public static final boolean 真 = true;
     public static final boolean 假 = false;
 
+    public static final String 文件类型_本地 = "path";
+    public static final String 文件类型_网络 = "url";
+
     public static final String 发送消息_普通消息 = null;
     public static final String 发送消息_XML = "xml";
     public static final String 发送消息_JSON = "json";
@@ -52,4 +55,9 @@ public interface Type {
     public static final int 群消息接收_收进群助手 = 2;
     public static final int 群消息接收_屏蔽群消息 = 3;
     public static final int 群消息接收_接收不提醒 = 4;
+
+    public static final int 语音类型_普通语音 = 0;
+    public static final int 语音类型_变声语音 = 1;
+    public static final int 语音类型_文字语音 = 2;
+    public static final int 语音类型_红包语音 = 3;
 }
